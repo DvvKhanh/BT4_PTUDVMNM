@@ -72,4 +72,49 @@ ingress:
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/854147d1-7c97-4a00-a5c6-75474039a813" />
 
 ### Bước 2: Truy cập các sub-domain
-- Truy cập sub-domain2 để quan sát xem cơ sở dữ liệu chưa có bảng nào?
+#### Truy cập sub-domain2 để quan sát xem cơ sở dữ liệu chưa có bảng nào?
+- Truy cập: pma.khanh123.id.vn
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1a4309e8-4733-45cc-90d6-72f7aa0b8408" />
+
+#### Truy cập sub-domain1 để cài đặt wordpress (làm theo hướng dẫn của wordpress)
+- Truy cập: wp.khanh123.id.vn
+- Chọn ngôn ngữ
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/2ab28a3b-767d-46b4-9a75-82067f9536d3" />
+
+- Nhập thông tin
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/b5894deb-b843-4d57-b64d-9674a7be87cf" />
+
+- Thông báo thành công sau khi cài đặt Wordpress
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/246085fb-d64e-4185-b7b7-f9241b15e49a" />
+
+- Đăng nhập tài khoản
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ce178113-6241-4b1f-bdf2-ddf0dc7b16f0" />
+
+#### Truy cập sub-domain2 để quan sát xem cơ sở dữ liệu có những bảng dữ liệu nào sau khi cài wp
+<img width="1848" height="1433" alt="6" src="https://github.com/user-attachments/assets/cb574e38-1a69-4d08-a254-d42b3af4acfc" />
+
+#### Tạo 1 bài viết trong wordpress giới thiệu về bản thân sinh viên: thông tin cá nhân, sở thích, ... bài viết có thể chứa hình ảnh, âm thanh, video, ...
+- Trong giao diện trang chủ Wordpress: chọn bài viết -> thêm bài viết
+<img width="1848" height="1433" alt="2" src="https://github.com/user-attachments/assets/98ef3ac0-cd3d-4412-9805-63556a7c85a0" />
+
+- Thêm bài viết giới thiệu bản thân
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ec819533-a05c-42fc-b2af-1994d6f46049" />
+
+- Truy cập: https://wp.khanh123.id.vn/2026/05/21/gioi-thieu-ban-than/
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/5448374b-d711-4b9f-82c9-70a0769a4c4f" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/6cac5524-59a1-499a-b22b-4fc8bfb0118a" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/f99c052d-250f-4cb9-8a6e-59c51a0f07e8" />
+
+#### Tạo 1 bài viết trong wordpress giới thiệu về nhữn kiến thức mà em đã học được ở môn Phát triển ứng dụng với mã nguồn mở
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4108f1c4-bda6-452d-a00a-d2229e4f07b0" />
+
+- Truy cập: https://wp.khanh123.id.vn/2026/05/21/ptudvmnm/
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/60426fa4-7b2a-460b-9335-07b38b4cd5f1" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/b1aa2358-278f-466f-905e-35d900848e2f" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/013ace45-be36-4a10-a412-cbc85ce49a77" />
+
+### Truy cập sub-domain3 để cấu hình n8n:
