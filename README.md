@@ -19,11 +19,10 @@
 <img width="1462" height="175" alt="image" src="https://github.com/user-attachments/assets/7b73be44-c5fd-4d46-b6ab-dfd36687dee2" />
 
 - Sau khi Tunnel được khởi tạo, tiến hành cấu hình DNS Routing để ánh xạ các subdomain về Tunnel vừa tạo:
-<img width="1461" height="233" alt="image" src="https://github.com/user-attachments/assets/1e63230f-7265-42b5-9328-7878cf82841a" />
-
+<img width="1467" height="240" alt="image" src="https://github.com/user-attachments/assets/3f66cc34-2054-469d-97c9-9615e7e3f490" />
 - Trong đó:
   + wp.khanh123.id.vn được sử dụng để truy cập website WordPress.
-  + db.khanh123.id.vn dùng để truy cập phpMyAdmin quản trị cơ sở dữ liệu.
+  + pma.khanh123.id.vn dùng để truy cập phpMyAdmin quản trị cơ sở dữ liệu.
   + n8n.khanh123.id.vn dùng để truy cập nền tảng tự động hóa n8n.
  
 - Tạo và cấu hình file config.yml cho Cloudflare Tunnel
@@ -37,7 +36,7 @@ credentials-file: /etc/cloudflared/96bae3bc-d9cc-427f-aa52-c7a3f60e4af9.json
 ingress:
   - hostname: wp.khanh123.id.vn
     service: http://wordpress:80
-  - hostname: db.khanh123.id.vn
+  - hostname: pma.khanh123.id.vn
     service: http://phpmyadmin:80
   - hostname: n8n.khanh123.id.vn
     service: http://n8n:5678
@@ -52,3 +51,5 @@ ingress:
 
 - Cập nhật file docker-compose.yml
   + Sau khi hoàn tất cấu hình Cloudflare Tunnel, tiến hành cập nhật file docker-compose.yml nhằm triển khai đồng thời toàn bộ các service của hệ thống bằng Docker Compose.
+
+### 
