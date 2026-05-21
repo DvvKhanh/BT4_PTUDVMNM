@@ -20,6 +20,7 @@
 
 - Sau khi Tunnel được khởi tạo, tiến hành cấu hình DNS Routing để ánh xạ các subdomain về Tunnel vừa tạo:
 <img width="1467" height="240" alt="image" src="https://github.com/user-attachments/assets/3f66cc34-2054-469d-97c9-9615e7e3f490" />
+
 - Trong đó:
   + wp.khanh123.id.vn được sử dụng để truy cập website WordPress.
   + pma.khanh123.id.vn dùng để truy cập phpMyAdmin quản trị cơ sở dữ liệu.
@@ -52,4 +53,23 @@ ingress:
 - Cập nhật file docker-compose.yml
   + Sau khi hoàn tất cấu hình Cloudflare Tunnel, tiến hành cập nhật file docker-compose.yml nhằm triển khai đồng thời toàn bộ các service của hệ thống bằng Docker Compose.
 
-### 
+### Cấu hình Cloudflare trong file docker-compose.yml
+<img width="1313" height="348" alt="image" src="https://github.com/user-attachments/assets/1fcd1125-08c4-4ba9-9e99-904527bf3e6d" />
+
+### Cấu hình n8n trong file docker-compose.yml
+<img width="666" height="352" alt="image" src="https://github.com/user-attachments/assets/cc82d1f8-21da-4942-97b8-496448c9e101" />
+
+### Triển khai hệ thống
+- Sử dụng lệnh ```docker compose up -d``` để triển khai và khởi động toàn bộ các service trong hệ thống dưới dạng container.
+<img width="1486" height="270" alt="image" src="https://github.com/user-attachments/assets/ab3c6939-85db-4ce5-979c-3aa3f9ccf1dc" />
+
+- Kiểm tra trạng thái hoạt động của các container trong hệ thống bằng lệnh: ```docker compose ps```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/903e8ad8-1345-4fab-80b2-904be836fc40" />
+
+## 2. Cấu hình Cloudflare Tunnel và định tuyến Subdomain
+### Bước 1: Cấu hình Cloudflare Tunnel 
+- Kết quả sau khi cấu hình Cloudflare Tunnel (em đã cấu hình ở ý 1)
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/854147d1-7c97-4a00-a5c6-75474039a813" />
+
+### Bước 2: Truy cập các sub-domain
+- Truy cập sub-domain2 để quan sát xem cơ sở dữ liệu chưa có bảng nào?
