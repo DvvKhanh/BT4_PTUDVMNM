@@ -234,11 +234,12 @@ return {
   + Bấm Add Field -> Chọn Status -> Chuyển thành Publish.
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd99dd35-1686-4fef-9312-4cab50ca3778" />
 
-### Bước 5: Bật Workflow và thử nghiệm thành quả
+### Bước 5: Bật Workflow
 - Nhấp vào nút Màu cam (Publish) ở góc trên bên phải màn hình n8n để kích hoạt chế độ tự động chạy ngầm.
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/83668432-c6bd-4c92-aaa9-0b164fef5142" />
 
-- Mở điện thoại lên, vào Telegram chat với Bot yêu cầu: "Viết bài 600 chữ về chủ đề: Giới thiệu ngành Kỹ thuật máy tính trường đại học Kỹ thuật Công nghiệp Thái Nguyên."
+## 3. Kết quả
+- Truy cập vào Telegram chat với Bot yêu cầu: "Viết bài 600 chữ về chủ đề: Giới thiệu ngành Kỹ thuật máy tính trường đại học Kỹ thuật Công nghiệp Thái Nguyên."
 - Đợi khoảng 10-15 giây để n8n kích hoạt -> Gemini xử lý -> Đăng lên WordPress.
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/bc396d32-8c37-4e34-8fc9-86110aea72b5" />
 
@@ -247,7 +248,13 @@ return {
 
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/e5af6d89-f2f4-4864-9eb7-7cebdf6f1050" />
 
-### Nhận xét kết quả đạt được
-- Tính thực tiễn cao: Hệ thống giúp tự động hóa quy trình sáng tạo nội dung (Content Creation) từ bước lên ý tưởng (Telegram) qua xử lý thông minh (AI Gemini) đến xuất bản (WordPress) mà không cần can thiệp thủ công.
-- Tối ưu hạ tầng với Docker: Việc đóng gói toàn bộ dịch vụ (Cơ sở dữ liệu, Web, Tool tự động hóa, Mạng mã hóa) vào một file docker-compose.yml giúp hệ thống cực kỳ dễ triển khai, bảo trì và mở rộng sau này.
-- Bảo mật và tiện lợi nhờ Cloudflare Tunnel: Không cần mở port nguy hiểm trên Router/VPS (No port forwarding), bảo mật được IP gốc của máy chủ trước các cuộc tấn công mạng, đồng thời hỗ trợ cấp SSL tự động (HTTPS).
+## 4. Nhận xét kết quả đạt được
+### Về mặt hạ tầng và hệ thống (Docker & Cloudflare Tunnel)
+- Tối ưu hóa tài nguyên: Việc đóng gói toàn bộ 5 dịch vụ bao gồm Cơ sở dữ liệu (MariaDB), công cụ quản trị (phpMyAdmin), mã nguồn web (WordPress), hệ thống tự động hóa (n8n) và mạng bảo mật (Cloudflare Tunnel) vào trong một file docker-compose.yml duy nhất giúp hệ thống vận hành cực kỳ gọn nhẹ, ổn định và không bị xung đột môi trường trên hệ điều hành Ubuntu.
+- Bảo mật và kết nối thông minh: Hệ thống hoàn toàn không cần mở port thủ công trên Router/VPS (No port forwarding), giúp ẩn IP gốc của máy chủ trước các nguy cơ tấn công mạng. Cloudflare Tunnel đã cấp chứng chỉ HTTPS tự động, giúp việc gọi API và Webhook giữa n8n, Telegram và WordPress diễn ra vô cùng an toàn và mượt mà.
+### Về mặt logic và tự động hóa (n8n Workflow & JavaScript)
+- Xử lý luồng dữ liệu chính xác: Xây dựng thành công một Automation Workflow khép kín. Node Telegram Trigger hoạt động nhạy bén, bắt kịp thời thời gian thực (Real-time) ngay khi có tin nhắn gửi đến Bot.
+- Làm sạch và tối ưu dữ liệu: Đoạn code JavaScript đóng vai trò như một bộ lọc thông minh, xử lý triệt để các ký tự thừa từ chuỗi văn bản thô của AI, chuyển đổi cấu trúc JSON một cách chuẩn xác để node WordPress có thể đọc và phân tách rõ ràng giữa tiêu đề (title) và nội dung (content).
+### Về mặt ứng dụng Trí tuệ nhân tạo (Google Gemini AI)
+- Nội dung chất lượng và cá nhân hóa: Model gemini-1.5-flash/gemini-pro đã thực hiện xuất sắc việc hiểu ngữ cảnh từ câu lệnh ngắn trên Telegram (ví dụ bài viết giới thiệu ngành Kỹ thuật máy tính trường TNUT). AI không chỉ viết ra bài viết đầy đủ cấu trúc mà còn tự động định dạng sẵn bằng các thẻ HTML/CSS (như <h2>, <h3>, <strong>, <ul>) để bài viết khi lên sóng WordPress có một giao diện trực quan, chuyên nghiệp.
+- Tăng tính tương tác: Nhờ việc lồng ghép câu lệnh Prompt nâng cao, AI đã tự động sinh thêm phần câu hỏi thảo luận, bắt trend ở cuối bài viết, giúp tối ưu hóa trải nghiệm người đọc và tăng tính tương tác cho blog.
