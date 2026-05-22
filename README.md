@@ -15,7 +15,7 @@
 <img width="577" height="448" alt="image" src="https://github.com/user-attachments/assets/fd5d044e-b1f7-4d1a-845e-1d54bb7188e5" />
 
 ### Public service bằng Cloudflare Tunnel
-- Tiến hành tạo Cloudflare Tunnel: ```cloudflared tunnel create bt4_wordpress```
+- Tiến hành tạo Cloudflare Tunnel: ```cloudflared tunnel create bt4_wordpress```(Cấu hình Cloudflare Tunnel nhằm công khai các dịch vụ WordPress, phpMyAdmin và n8n thông qua các subdomain riêng biệt. Toàn bộ quá trình được thực hiện bằng giao diện dòng lệnh (CLI) của Cloudflare Tunnel, giúp thao tác nhanh chóng, dễ quản lý và thuận tiện trong việc triển khai trên môi trường máy chủ Ubuntu.)
 <img width="1462" height="175" alt="image" src="https://github.com/user-attachments/assets/7b73be44-c5fd-4d46-b6ab-dfd36687dee2" />
 
 - Sau khi Tunnel được khởi tạo, tiến hành cấu hình DNS Routing để ánh xạ các subdomain về Tunnel vừa tạo:
