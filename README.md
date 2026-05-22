@@ -172,7 +172,7 @@ ingress:
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4f97286a-96cf-4a6f-a7d9-dc8fb7bca9fd" />
 
 #### Node 2: Google Gemini (Message a model)
-- Trong thanh tìm kiếm gõ Gemini -> Chọn Message a model
+- Trong thanh tìm kiếm gõ Google Gemini -> Chọn Message a model
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4e171aa0-76e8-4e17-bbe7-6af3e9d76942" />
 
 - Credential for Google Gemini (API Key): Chọn Create New Credential, dán API Key lấy từ Google AI Studio vào.
@@ -215,10 +215,10 @@ return {
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/561163dc-7e7e-4adb-8459-d4d05b201e67" />
 
 #### Node 4: WordPress (Create a Post)
-- Nối tiếp sau node Code, Trong thanh tìm kiếm gõ WordPress -> Chọn Actions: Create a Post.
+- Nối tiếp sau node Code, trong thanh tìm kiếm gõ WordPress -> Chọn Actions: Create a Post.
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/937427f7-abc1-49be-ab91-c0d18424efbc" />
 
-- Credential for WordPress REST API: * Resource: Post | Operation: Create
+- Credential for WordPress REST API:
   + URL: https://wp.khanh123.id.vn/
   + User: Tên đăng nhập Admin WordPress.
   + Password: Dán mật khẩu ứng dụng 24 ký tự (không dùng mật khẩu đăng nhập chính).
@@ -235,7 +235,7 @@ return {
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd99dd35-1686-4fef-9312-4cab50ca3778" />
 
 ### Bước 5: Bật Workflow
-- Nhấp vào nút Màu cam (Publish) ở góc trên bên phải màn hình n8n để kích hoạt chế độ tự động chạy ngầm.
+- Nhấp vào nút màu cam (Publish) ở góc trên bên phải màn hình n8n để kích hoạt chế độ tự động chạy ngầm.
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/83668432-c6bd-4c92-aaa9-0b164fef5142" />
 
 ## 3. Kết quả
@@ -249,12 +249,15 @@ return {
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/e5af6d89-f2f4-4864-9eb7-7cebdf6f1050" />
 
 ## 4. Nhận xét kết quả đạt được
-### Về mặt hạ tầng và hệ thống (Docker & Cloudflare Tunnel)
-- Tối ưu hóa tài nguyên: Việc đóng gói toàn bộ 5 dịch vụ bao gồm Cơ sở dữ liệu (MariaDB), công cụ quản trị (phpMyAdmin), mã nguồn web (WordPress), hệ thống tự động hóa (n8n) và mạng bảo mật (Cloudflare Tunnel) vào trong một file docker-compose.yml duy nhất giúp hệ thống vận hành cực kỳ gọn nhẹ, ổn định và không bị xung đột môi trường trên hệ điều hành Ubuntu.
-- Bảo mật và kết nối thông minh: Hệ thống hoàn toàn không cần mở port thủ công trên Router/VPS (No port forwarding), giúp ẩn IP gốc của máy chủ trước các nguy cơ tấn công mạng. Cloudflare Tunnel đã cấp chứng chỉ HTTPS tự động, giúp việc gọi API và Webhook giữa n8n, Telegram và WordPress diễn ra vô cùng an toàn và mượt mà.
-### Về mặt logic và tự động hóa (n8n Workflow & JavaScript)
-- Xử lý luồng dữ liệu chính xác: Xây dựng thành công một Automation Workflow khép kín. Node Telegram Trigger hoạt động nhạy bén, bắt kịp thời thời gian thực (Real-time) ngay khi có tin nhắn gửi đến Bot.
-- Làm sạch và tối ưu dữ liệu: Đoạn code JavaScript đóng vai trò như một bộ lọc thông minh, xử lý triệt để các ký tự thừa từ chuỗi văn bản thô của AI, chuyển đổi cấu trúc JSON một cách chuẩn xác để node WordPress có thể đọc và phân tách rõ ràng giữa tiêu đề (title) và nội dung (content).
-### Về mặt ứng dụng Trí tuệ nhân tạo (Google Gemini AI)
-- Nội dung chất lượng và cá nhân hóa: Model gemini-1.5-flash/gemini-pro đã thực hiện xuất sắc việc hiểu ngữ cảnh từ câu lệnh ngắn trên Telegram (ví dụ bài viết giới thiệu ngành Kỹ thuật máy tính trường TNUT). AI không chỉ viết ra bài viết đầy đủ cấu trúc mà còn tự động định dạng sẵn bằng các thẻ HTML/CSS (như <h2>, <h3>, <strong>, <ul>) để bài viết khi lên sóng WordPress có một giao diện trực quan, chuyên nghiệp.
-- Tăng tính tương tác: Nhờ việc lồng ghép câu lệnh Prompt nâng cao, AI đã tự động sinh thêm phần câu hỏi thảo luận, bắt trend ở cuối bài viết, giúp tối ưu hóa trải nghiệm người đọc và tăng tính tương tác cho blog.
+- Sau khi hoàn thành bài tập, hệ thống triển khai bằng Docker Compose đã hoạt động ổn định với đầy đủ 5 service gồm MariaDB, phpMyAdmin, WordPress, Cloudflared và n8n. Các container được quản lý tập trung, dễ dàng khởi động và kiểm tra trạng thái thông qua Docker trên Ubuntu.
+- Cloudflare Tunnel đã được cấu hình thành công giúp public các dịch vụ nội bộ ra Internet thông qua các subdomain riêng biệt như WordPress, phpMyAdmin và n8n mà không cần mở port trực tiếp trên VPS. Việc sử dụng Cloudflare Tunnel giúp tăng tính bảo mật và thuận tiện trong quá trình truy cập từ xa.
+- WordPress được cài đặt và kết nối thành công với cơ sở dữ liệu MariaDB. Sau khi hoàn tất cấu hình, hệ thống tự động sinh các bảng dữ liệu trong phpMyAdmin. Đồng thời đã tạo được các bài viết giới thiệu bản thân và nội dung môn học với đầy đủ hình ảnh, văn bản và giao diện hiển thị trực quan.
+- Dịch vụ n8n được cấu hình hoàn chỉnh và kích hoạt Community License thành công. Workflow tự động hóa giữa Telegram, Google Gemini AI và WordPress đã hoạt động đúng yêu cầu. Khi gửi nội dung từ Telegram bot, dữ liệu được chuyển đến Gemini AI để sinh nội dung HTML, sau đó xử lý qua JavaScript và tự động đăng bài lên WordPress mà không cần thao tác thủ công.
+- Thông qua bài thực hành, em đã hiểu rõ hơn về:
+  + Triển khai hệ thống nhiều service bằng Docker Compose.
+  + Kết nối và quản lý cơ sở dữ liệu MariaDB.
+  + Public dịch vụ bằng Cloudflare Tunnel.
+  + Tự động hóa quy trình với n8n.
+  + Tích hợp AI Gemini và Telegram Bot vào hệ thống thực tế.
+  + Ứng dụng mã nguồn mở trong phát triển và vận hành website
+- Kết quả đạt được cho thấy khả năng xây dựng một hệ thống tự động đăng bài ứng dụng AI hoàn chỉnh, có tính thực tiễn cao và phù hợp với xu hướng phát triển các nền tảng tự động hóa hiện nay.
