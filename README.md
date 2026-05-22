@@ -178,7 +178,7 @@ ingress:
 - Credential for Google Gemini (API Key): Chọn Create New Credential, dán API Key lấy từ Google AI Studio vào.
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/a2e8259c-2a1c-4358-a8e6-b2ef9e8adc9a" />
 
-- Prompt: Kéo trường Text từ node Telegram sang và bổ sung yêu cầu định dạng JSON. Cú pháp chuẩn sẽ như sau:
+- Prompt: Kéo trường Text từ node Telegram sang và bổ sung yêu cầu định dạng JSON. Cú pháp:
 ```
 {{ $json.message.text }}. 
 
@@ -220,12 +220,13 @@ return {
 
 - Credential for WordPress REST API: * Resource: Post | Operation: Create
   + URL: https://wp.khanh123.id.vn/
-  + Authentication: Chọn Basic Auth.
   + User: Tên đăng nhập Admin WordPress.
   + Password: Dán mật khẩu ứng dụng 24 ký tự (không dùng mật khẩu đăng nhập chính).
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ee418941-037c-474a-9271-d9562e5bb204" />
 
-- Kiểm tra nâng cao: Bật Ignore SSL Issues (Insecure) sang ON.
+- Bật Ignore SSL Issues (Insecure) sang On.
+<img width="1345" height="821" alt="image" src="https://github.com/user-attachments/assets/bd478406-8c2f-4b8a-a5ae-c4afde166e67" />
+
 - Cấu hình Fields:
   + Bấm nút Execute previous nodes để lấy data mẫu từ node Code JS.
   + Title: Kéo thả biến title từ phần kết quả node trước vào.
@@ -233,10 +234,10 @@ return {
   + Bấm Add Field -> Chọn Status -> Chuyển thành Publish.
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd99dd35-1686-4fef-9312-4cab50ca3778" />
 
-<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/83668432-c6bd-4c92-aaa9-0b164fef5142" />
-
 ### Bước 5: Bật Workflow và thử nghiệm thành quả
 - Nhấp vào nút Màu cam (Publish) ở góc trên bên phải màn hình n8n để kích hoạt chế độ tự động chạy ngầm.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/83668432-c6bd-4c92-aaa9-0b164fef5142" />
+
 - Mở điện thoại lên, vào Telegram chat với Bot yêu cầu: "Viết bài 600 chữ về chủ đề: Giới thiệu ngành Kỹ thuật máy tính trường đại học Kỹ thuật Công nghiệp Thái Nguyên."
 - Đợi khoảng 10-15 giây để n8n kích hoạt -> Gemini xử lý -> Đăng lên WordPress.
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/bc396d32-8c37-4e34-8fc9-86110aea72b5" />
