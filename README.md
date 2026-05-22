@@ -71,7 +71,7 @@ ingress:
 - Kết quả sau khi cấu hình Cloudflare Tunnel (em đã cấu hình ở ý 1)
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/854147d1-7c97-4a00-a5c6-75474039a813" />
 
-### Bước 2: Truy cập các sub-domain
+### Bước 2: Cài đặt Wordpress và kiểm tra database
 #### Truy cập sub-domain2 để quan sát xem cơ sở dữ liệu chưa có bảng nào?
 - Truy cập: pma.khanh123.id.vn
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1a4309e8-4733-45cc-90d6-72f7aa0b8408" />
@@ -117,4 +117,6 @@ ingress:
 
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/013ace45-be36-4a10-a412-cbc85ce49a77" />
 
-### Truy cập sub-domain3 để cấu hình n8n:
+### Bước 3: Kích hoạt Licece và chuẩn bị API cho n8n
+#### 1. Kích hoạt n8n Community
+- Truy cập https://n8n.khanh123.id.vn/ để đăng ký tài khoản Admin n8n
