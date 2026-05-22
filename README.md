@@ -156,5 +156,97 @@ ingress:
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/a3c24be2-122c-4611-bbf0-256a4a669770" />
 
 ### Bước 4: Xây dựng Workflow trên n8n
-- Trong n8n, Tạo một Workflow mới và thêm 4 Node nối tiếp
+- Trong n8n, tạo một Workflow mới và thêm 4 node nối tiếp
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/c7e624b3-ecaa-4646-8d9f-7c975fbc3af3" />
+
+#### Node 1: Telegram Trigger (On Message)
+- Bấm "+" -> Trong thanh tìm kiếm gõ Telegram -> chọn Trigger On: Message
+<img width="1920" height="1205" alt="5" src="https://github.com/user-attachments/assets/3f7da924-3ae0-4496-951b-0beab130aa8a" />
+
+- Credential for Telegram API: Chọn Create New Credential, dán Access Token của Bot Telegram vào đây -> nhấn Save.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/82a079fa-ee51-4022-9a81-453197104052" />
+
+- Bấm nút Listen for test event, sau đó mở Telegram chát với Bot chữ "hello" để node này bắt được dữ liệu mẫu.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/720cca0f-d648-40c0-91c9-d581a1a60e67" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4f97286a-96cf-4a6f-a7d9-dc8fb7bca9fd" />
+
+#### Node 2: Google Gemini (Message a model)
+- Trong thanh tìm kiếm gõ Gemini -> Chọn Message a model
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4e171aa0-76e8-4e17-bbe7-6af3e9d76942" />
+
+- Credential for Google Gemini (API Key): Chọn Create New Credential, dán API Key lấy từ Google AI Studio vào.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/a2e8259c-2a1c-4358-a8e6-b2ef9e8adc9a" />
+
+- Prompt: Kéo trường Text từ node Telegram sang và bổ sung yêu cầu định dạng JSON. Cú pháp chuẩn sẽ như sau:
+```
+{{ $json.message.text }}. 
+
+Hãy viết bài viết hoàn chỉnh dựa trên chủ đề trên. 
+BẮT BUỘC trả về kết quả dưới định dạng JSON thuần túy (không bọc trong tag ```json), cấu trúc như sau:
+{
+  "post_title": "Tiêu đề bài viết hay và thu hút",
+  "post_content": "Toàn bộ nội dung bài viết dài khoảng 600 chữ, được định dạng đẹp bằng các thẻ HTML và CSS (ví dụ h2, p, strong, em, h3) để tôi đăng trực tiếp lên WordPress."
+}
+```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/08c8d8c6-b9da-4866-b57b-8a50a6fc9a83" />
+
+#### Node 3: Code in JavaScript
+- Trong thanh tìm kiếm gõ Code -> chọn Code in JavaScript
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1d6f0f65-e363-4a78-89d6-b44741d4b1ca" />
+
+- Nối tiếp sau node Gemini. Đoạn code này dùng để xử lý chuỗi văn bản thuần (Text) mà Gemini trả về thành một Object JSON mà n8n có thể đọc được cấu trúc:
+```
+// 1. lấy dữ liệu gốc từ node Gemini
+const rawText = $input.first().json.content.parts[0].text;
+
+// Xóa bỏ các ký tự bọc markdown nếu AI lỡ thêm vào
+const cleanText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+
+// 2. Chuyển đổi chuỗi thành Object trong JavaScript
+const cleanData = JSON.parse(cleanText);
+
+// 3. Trả về kết quả định dạng lại gọn gàng cho node WordPress sử dụng
+return {
+  title: cleanData.post_title,
+  content: cleanData.post_content
+};
+```
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/561163dc-7e7e-4adb-8459-d4d05b201e67" />
+
+#### Node 4: WordPress (Create a Post)
+- Nối tiếp sau node Code, Trong thanh tìm kiếm gõ WordPress -> Chọn Actions: Create a Post.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/937427f7-abc1-49be-ab91-c0d18424efbc" />
+
+- Credential for WordPress REST API: * Resource: Post | Operation: Create
+  + URL: https://wp.khanh123.id.vn/
+  + Authentication: Chọn Basic Auth.
+  + User: Tên đăng nhập Admin WordPress.
+  + Password: Dán mật khẩu ứng dụng 24 ký tự (không dùng mật khẩu đăng nhập chính).
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ee418941-037c-474a-9271-d9562e5bb204" />
+
+- Kiểm tra nâng cao: Bật Ignore SSL Issues (Insecure) sang ON.
+- Cấu hình Fields:
+  + Bấm nút Execute previous nodes để lấy data mẫu từ node Code JS.
+  + Title: Kéo thả biến title từ phần kết quả node trước vào.
+  + Content: Kéo thả biến content từ phần kết quả node trước vào.
+  + Bấm Add Field -> Chọn Status -> Chuyển thành Publish.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/dd99dd35-1686-4fef-9312-4cab50ca3778" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/83668432-c6bd-4c92-aaa9-0b164fef5142" />
+
+### Bước 5: Bật Workflow và thử nghiệm thành quả
+- Nhấp vào nút Màu cam (Publish) ở góc trên bên phải màn hình n8n để kích hoạt chế độ tự động chạy ngầm.
+- Mở điện thoại lên, vào Telegram chat với Bot yêu cầu: "Viết bài 600 chữ về chủ đề: Giới thiệu ngành Kỹ thuật máy tính trường đại học Kỹ thuật Công nghiệp Thái Nguyên."
+- Đợi khoảng 10-15 giây để n8n kích hoạt -> Gemini xử lý -> Đăng lên WordPress.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/bc396d32-8c37-4e34-8fc9-86110aea72b5" />
+
+- Truy cập trang chủ WordPress: https://wp.khanh123.id.vn/
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/a0f48929-272a-420f-a293-f52f9da0baca" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/e5af6d89-f2f4-4864-9eb7-7cebdf6f1050" />
+
+### Nhận xét kết quả đạt được
+- Tính thực tiễn cao: Hệ thống giúp tự động hóa quy trình sáng tạo nội dung (Content Creation) từ bước lên ý tưởng (Telegram) qua xử lý thông minh (AI Gemini) đến xuất bản (WordPress) mà không cần can thiệp thủ công.
+- Tối ưu hạ tầng với Docker: Việc đóng gói toàn bộ dịch vụ (Cơ sở dữ liệu, Web, Tool tự động hóa, Mạng mã hóa) vào một file docker-compose.yml giúp hệ thống cực kỳ dễ triển khai, bảo trì và mở rộng sau này.
+- Bảo mật và tiện lợi nhờ Cloudflare Tunnel: Không cần mở port nguy hiểm trên Router/VPS (No port forwarding), bảo mật được IP gốc của máy chủ trước các cuộc tấn công mạng, đồng thời hỗ trợ cấp SSL tự động (HTTPS).
