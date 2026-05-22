@@ -73,11 +73,11 @@ ingress:
 
 ### Bước 2: Cài đặt Wordpress và kiểm tra database
 #### Truy cập sub-domain2 để quan sát xem cơ sở dữ liệu chưa có bảng nào?
-- Truy cập: pma.khanh123.id.vn
+- Truy cập: https://pma.khanh123.id.vn/
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1a4309e8-4733-45cc-90d6-72f7aa0b8408" />
 
 #### Truy cập sub-domain1 để cài đặt wordpress (làm theo hướng dẫn của wordpress)
-- Truy cập: wp.khanh123.id.vn
+- Truy cập: https://wp.khanh123.id.vn/
 - Chọn ngôn ngữ
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/2ab28a3b-767d-46b4-9a75-82067f9536d3" />
 
@@ -117,6 +117,44 @@ ingress:
 
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/013ace45-be36-4a10-a412-cbc85ce49a77" />
 
-### Bước 3: Kích hoạt Licece và chuẩn bị API cho n8n
+### Bước 3: Kích hoạt License và chuẩn bị API cho n8n
 #### 1. Kích hoạt n8n Community
 - Truy cập https://n8n.khanh123.id.vn/ để đăng ký tài khoản Admin n8n
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/e24bb673-6a28-44ff-b613-b8a4d62c8ba6" />
+
+- Khi hệ thống hỏi License, điền thông tin để n8n gửi Key về Email.
+<img width="1920" height="1205" alt="5" src="https://github.com/user-attachments/assets/3602e4f7-dace-43af-8c7b-5fba2121366f" />
+
+- Vào Email -> Copy Key
+<img width="1920" height="1205" alt="5" src="https://github.com/user-attachments/assets/3b5012bc-37fb-4eaa-ac77-b4036afe4716" />
+
+- Vào Settings (Bánh răng góc dưới trái) > Usage and plan > Enter activation key -> Paste key vào để kích hoạt bản Registered Community Edition.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/d8481668-d3c2-4efa-b4a7-2610bd83906b" />
+
+#### 2. Lấy Telegram Bot Token
+- Mở Telegram, chát với @BotFather.
+- Gửi lệnh /newbot, đặt tên cho Bot và Username cho Bot.
+- @BotFather sẽ trả về một chuỗi API Token (Ví dụ: 7123456789:ABCdefGhI...). Hãy copy lại.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/f26fe59c-9826-4886-b360-a91e11d0b8b6" />
+
+#### 3. Lấy Google Gemini API Key
+- Truy cập Google AI Studio.
+- Bấm Create API Key -> Tạo một Project mới và copy chuỗi API Key được cấp.
+<img width="1920" height="1205" alt="5" src="https://github.com/user-attachments/assets/a1680d43-2058-4e33-9893-63ba02c2f870" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/3344a185-708b-452b-820d-67c4c2d2e046" />
+
+<img width="1920" height="1205" alt="5" src="https://github.com/user-attachments/assets/44dfdf05-70d0-4b66-a70f-e3d6ed2fd531" />
+
+#### 4. Lấy Application Password từ WordPress
+- Vào trang quản trị Wordpress (sub-domain1/wp-admin) -> Tài khoản -> Hồ sơ.
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/53de76ab-a1d7-4c86-b1a0-208281e6d458" />
+
+- Kéo xuống dưới cùng tìm mục Mật khẩu ứng dụng (Application Passwords).
+- Nhập tên ứng dụng là n8n -> Bấm Thêm mật khẩu ứng dụng mới.
+- Copy chuỗi 24 ký tự hiển thị trên màn hình (Lưu ý: Nó chỉ hiển thị 1 lần).
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/a3c24be2-122c-4611-bbf0-256a4a669770" />
+
+### Bước 4: Xây dựng Workflow trên n8n
+- Trong n8n, Tạo một Workflow mới và thêm 4 Node nối tiếp
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/c7e624b3-ecaa-4646-8d9f-7c975fbc3af3" />
