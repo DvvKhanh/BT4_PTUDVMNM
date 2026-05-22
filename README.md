@@ -91,11 +91,11 @@ ingress:
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ce178113-6241-4b1f-bdf2-ddf0dc7b16f0" />
 
 #### Truy cập sub-domain2 để quan sát xem cơ sở dữ liệu có những bảng dữ liệu nào sau khi cài wp
-<img width="1848" height="1433" alt="6" src="https://github.com/user-attachments/assets/cb574e38-1a69-4d08-a254-d42b3af4acfc" />
+<img width="1533" height="958" alt="6" src="https://github.com/user-attachments/assets/aaf76665-6f62-4935-9470-bf0ab00c4569" />
 
 #### Tạo 1 bài viết trong wordpress giới thiệu về bản thân sinh viên: thông tin cá nhân, sở thích, ... bài viết có thể chứa hình ảnh, âm thanh, video, ...
 - Trong giao diện trang chủ Wordpress: chọn bài viết -> thêm bài viết
-<img width="1848" height="1433" alt="2" src="https://github.com/user-attachments/assets/98ef3ac0-cd3d-4412-9805-63556a7c85a0" />
+<img width="1543" height="968" alt="2" src="https://github.com/user-attachments/assets/9d74f31b-135e-4be4-bba9-97c58153293a" />
 
 - Thêm bài viết giới thiệu bản thân
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/ec819533-a05c-42fc-b2af-1994d6f46049" />
@@ -107,7 +107,7 @@ ingress:
 
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/f99c052d-250f-4cb9-8a6e-59c51a0f07e8" />
 
-#### Tạo 1 bài viết trong wordpress giới thiệu về nhữn kiến thức mà em đã học được ở môn Phát triển ứng dụng với mã nguồn mở
+#### Tạo 1 bài viết trong wordpress giới thiệu về những kiến thức mà em đã học được ở môn Phát triển ứng dụng với mã nguồn mở
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/4108f1c4-bda6-452d-a00a-d2229e4f07b0" />
 
 - Truy cập: https://wp.khanh123.id.vn/2026/05/21/ptudvmnm/
